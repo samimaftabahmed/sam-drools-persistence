@@ -1,0 +1,27 @@
+package KieRule;
+import com.sam.drools.samdroolspersistence.Order;
+
+rule "Garbage collect rule"
+salience -100
+when
+	$orderObject: Order();
+then
+    System.out.println($orderObject);
+	delete($orderObject);
+end;
+
+rule "HDFC"
+when
+    $orderObject: Order(cardType=="HDFC" && price>10000);
+then
+    modify($orderObject) {
+        setDiscount(10);
+    }
+end
+
+rule "ICICI"
+when
+    $orderObject: Order(cardType=="ICICI" && price>15000);
+then
+    $orderObject.setDiscount(15);
+end
