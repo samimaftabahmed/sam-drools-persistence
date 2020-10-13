@@ -1,7 +1,10 @@
 package com.sam.drools.samdroolspersistence.controller;
 
+import com.sam.drools.samdroolspersistence.entity.SessioninfoEntity;
 import com.sam.drools.samdroolspersistence.model.Order;
 import com.sam.drools.samdroolspersistence.model.Person;
+import com.sam.drools.samdroolspersistence.service.ISessionService;
+import org.kie.api.runtime.KieSession;
 import org.kie.internal.runtime.StatefulKnowledgeSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +20,12 @@ public class MyController {
 
     //    @Autowired
 //    private IPersistentKieService iPersistentKieService;
-//    @Autowired
-//    private KieSession session;
     @Autowired
-    private StatefulKnowledgeSession session;
+    private KieSession session;
+//    @Autowired
+//    private StatefulKnowledgeSession session;
+    @Autowired
+    private ISessionService iSessionService;
 
 
     @GetMapping("/order/{card-type}/{price}")
@@ -59,5 +64,14 @@ public class MyController {
 
         return person;
     }
+
+    @GetMapping("/session-data")
+    public void getSessionData() {
+
+        SessioninfoEntity sessioninfoEntity = iSessionService.getStoredSessionDetails();
+
+        System.out.println(sessioninfoEntity.getId());
+    }
+
 
 }
