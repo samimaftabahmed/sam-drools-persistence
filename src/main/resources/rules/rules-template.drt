@@ -1,0 +1,24 @@
+template header
+gender
+toCompareName
+toCompareGender
+
+package com.sam.drools.samdroolspersistence;
+
+import com.sam.drools.samdroolspersistence.model.Person;
+
+template "test_template"
+    rule "Person_@{row.rowNumber}"
+    when
+        $person: Person(name == @{toCompareName});
+    then
+        $person.setGender("@{gender}");
+    end
+
+    rule "Person2_@{row.rowNumber}"
+    when
+        $person: Person(name != @{toCompareName});
+    then
+        $person.setGender("Unknown Gender");
+    end
+end template

@@ -1,0 +1,16 @@
+package com.sam.drools.samdroolspersistence;
+import com.sam.drools.samdroolspersistence.model.Person;
+
+rule "Person gender male"
+when
+    $person: Person(name == "John");
+then
+    $person.setGender("Male");
+end
+
+rule "Person gender female"
+when
+    $person: Person(name == "Christy");
+then
+    $person.setGender("Female");
+end

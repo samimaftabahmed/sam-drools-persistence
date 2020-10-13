@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SamDroolsPersistenceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SamDroolsPersistenceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SamDroolsPersistenceApplication.class, args);
+    }
 
 }
